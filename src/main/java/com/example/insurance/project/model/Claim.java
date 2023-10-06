@@ -15,21 +15,17 @@ import jakarta.persistence.Table;
 public class Claim {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private Integer id;
 	private String claimNumber;
 	private String description;
 	private LocalDate date;
 	private double claimAmount;
 
-	@ManyToOne
-	@JoinColumn(name = "policy_id")
-	private Policy policy;
-
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -65,18 +61,10 @@ public class Claim {
 		this.claimAmount = claimAmount;
 	}
 
-	public Policy getPolicy() {
-		return policy;
-	}
-
-	public void setPolicy(Policy policy) {
-		this.policy = policy;
-	}
-
 	@Override
 	public String toString() {
 		return "Claim [id=" + id + ", claimNumber=" + claimNumber + ", description=" + description + ", date=" + date
-				+ ", claimAmount=" + claimAmount + ", policy=" + policy + "]";
+				+ ", claimAmount=" + claimAmount + "]";
 	}
 
 }

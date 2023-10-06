@@ -15,21 +15,18 @@ import jakarta.persistence.Table;
 public class Payment {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private Integer id;
 	private String transactionId;
 	private double amount;
 	private LocalDate paymentDate;
 	private String status;
 
-	@ManyToOne
-	@JoinColumn(name = "policy_id")
-	private Policy policy;
 
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -57,13 +54,6 @@ public class Payment {
 		this.paymentDate = paymentDate;
 	}
 
-	public Policy getPolicy() {
-		return policy;
-	}
-
-	public void setPolicy(Policy policy) {
-		this.policy = policy;
-	}
 
 	public String getStatus() {
 		return status;
@@ -76,8 +66,9 @@ public class Payment {
 	@Override
 	public String toString() {
 		return "Payment [id=" + id + ", transactionId=" + transactionId + ", amount=" + amount + ", paymentDate="
-				+ paymentDate + ", status=" + status + ", policy=" + policy + "]";
+				+ paymentDate + ", status=" + status + "]";
 	}
+
 
 	
 }

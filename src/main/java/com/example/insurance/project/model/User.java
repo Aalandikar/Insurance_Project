@@ -17,7 +17,9 @@ public class User {
 	private String firstName;
 	private String lastName;
 	private String email;
+	private String password;
 	private LocalDate dateOfBirth;
+	private String mobile;
 
 	public Long getId() {
 		return id;
@@ -59,10 +61,18 @@ public class User {
 		this.dateOfBirth = dateOfBirth;
 	}
 
+	public String getMobile() {
+		return mobile;
+	}
+
+	public void setMobile(String mobile) {
+		this.mobile = mobile;
+	}
+
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
-				+ ", dateOfBirth=" + dateOfBirth + "]";
+				+ ", password=" + password + ", dateOfBirth=" + dateOfBirth + ", mobile=" + mobile + "]";
 	}
 
 }
