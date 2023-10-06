@@ -15,24 +15,17 @@ import jakarta.persistence.Table;
 public class Policy {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private Integer id;
 	private String policyNumber;
 	private String insuranceType;
 	private String status;
 	private double premium;
-	private LocalDate startDate;
-	private LocalDate endDate;
-	// Other fields, getters, setters...
 
-	@ManyToOne
-	@JoinColumn(name = "customer_id")
-	private User user;
-
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -60,30 +53,6 @@ public class Policy {
 		this.premium = premium;
 	}
 
-	public LocalDate getStartDate() {
-		return startDate;
-	}
-
-	public void setStartDate(LocalDate startDate) {
-		this.startDate = startDate;
-	}
-
-	public LocalDate getEndDate() {
-		return endDate;
-	}
-
-	public void setEndDate(LocalDate endDate) {
-		this.endDate = endDate;
-	}
-
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
-	}
-
 	public String getStatus() {
 		return status;
 	}
@@ -91,14 +60,5 @@ public class Policy {
 	public void setStatus(String status) {
 		this.status = status;
 	}
-
-	@Override
-	public String toString() {
-		return "Policy [id=" + id + ", policyNumber=" + policyNumber + ", insuranceType=" + insuranceType + ", status="
-				+ status + ", premium=" + premium + ", startDate=" + startDate + ", endDate=" + endDate + ", user="
-				+ user + "]";
-	}
-
-	
 
 }

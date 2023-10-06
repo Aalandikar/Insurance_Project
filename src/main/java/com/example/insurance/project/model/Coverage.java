@@ -13,20 +13,17 @@ import jakarta.persistence.Table;
 public class Coverage {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
     private String name;
     private String description;
     private double coverageAmount;
     
-    @ManyToOne
-    @JoinColumn(name = "policy_id")
-    private Policy policy;
 
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -54,21 +51,13 @@ public class Coverage {
 		this.coverageAmount = coverageAmount;
 	}
 
-	public Policy getPolicy() {
-		return policy;
-	}
-
-	public void setPolicy(Policy policy) {
-		this.policy = policy;
-	}
-
 	@Override
 	public String toString() {
 		return "Coverage [id=" + id + ", name=" + name + ", description=" + description + ", coverageAmount="
-				+ coverageAmount + ", policy=" + policy + "]";
+				+ coverageAmount + "]";
 	}
-    
-    
+
+
 
 }
 
