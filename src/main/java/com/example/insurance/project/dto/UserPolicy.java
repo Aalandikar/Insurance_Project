@@ -1,4 +1,4 @@
-package com.example.insurance.project.model;
+package com.example.insurance.project.dto;
 
 import java.time.LocalDate;
 
@@ -9,8 +9,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "customertable")
-public class CustomerPolicy {
+@Table(name = "userpolicy")
+public class UserPolicy {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
@@ -21,7 +21,9 @@ public class CustomerPolicy {
 	private String premiumPaymentCycle;
 	private LocalDate startDate;
 	private LocalDate endDate;
-
+	private String status;
+	private double premium;
+	
 	public Integer getId() {
 		return id;
 	}
@@ -85,12 +87,30 @@ public class CustomerPolicy {
 	public void setEndDate(LocalDate endDate) {
 		this.endDate = endDate;
 	}
+	
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	public double getPremium() {
+		return premium;
+	}
+
+	public void setPremium(double premium) {
+		this.premium = premium;
+	}
 
 	@Override
 	public String toString() {
-		return "CustomerPolicy [id=" + id + ", userId=" + userId + ", policyId=" + policyId + ", policyName="
-				+ policyName + ", no_OfYears=" + no_OfYears + ", premiumPaymentCycle=" + premiumPaymentCycle
-				+ ", startDate=" + startDate + ", endDate=" + endDate + "]";
+		return "UserPolicy [id=" + id + ", userId=" + userId + ", policyId=" + policyId + ", policyName=" + policyName
+				+ ", no_OfYears=" + no_OfYears + ", premiumPaymentCycle=" + premiumPaymentCycle + ", startDate="
+				+ startDate + ", endDate=" + endDate + ", status=" + status + ", premium=" + premium + "]";
 	}
+
 
 }
