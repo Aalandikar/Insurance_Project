@@ -6,13 +6,13 @@ import com.example.insurance.project.model.Policy;
 
 public interface PolicyService {
 	public Policy savePolicy(Policy policy);
-	
-public Policy updatePolicy(Policy policy);
-	
+
+	public Policy updatePolicy(Policy policy);
+
 	public void deletePolicy(Integer policyId);
-	
+
 	public Policy getPolicyById(Integer policyId);
-	
-	public List<Policy> getAllPolicies ();
+
+	public List<Policy> getAllPolicies();
 
 }

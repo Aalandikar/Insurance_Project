@@ -1,14 +1,10 @@
 package com.example.insurance.project.model;
 
-import java.time.LocalDate;
-
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "policy")
@@ -18,6 +14,8 @@ public class Policy {
 	private Integer policyId;
 	private String policyName;
 	private String policyType;
+	private Integer userId;
+
 	public Integer getPolicyId() {
 		return policyId;
 	}
@@ -36,9 +34,16 @@ public class Policy {
 	public void setPolicyType(String policyType) {
 		this.policyType = policyType;
 	}
+	public Integer getUserId() {
+		return userId;
+	}
+	public void setUserId(Integer userId) {
+		this.userId = userId;
+	}
 	@Override
 	public String toString() {
-		return "Policy [policyId=" + policyId + ", policyName=" + policyName + ", policyType=" + policyType + "]";
+		return "Policy [policyId=" + policyId + ", policyName=" + policyName + ", policyType=" + policyType
+				+ ", userId=" + userId + "]";
 	}
 
 	

@@ -1,17 +1,19 @@
 package com.example.insurance.project.model;
 
 import java.time.LocalDate;
+import java.util.List;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 @Entity
 @Table(name = "user")
 public class User {
@@ -22,9 +24,75 @@ public class User {
 	private String lastName;
 	private String email;
 	private String password;
-	@JsonFormat(pattern="dd-MM-yyyy")
+	@JsonFormat(pattern = "dd-MM-yyyy")
 	private LocalDate dateOfBirth;
 	private String mobile;
+
+	@OneToMany(mappedBy = "userId")
+	private List<Policy> policyList;
+
+	@OneToMany(mappedBy = "userId")
+	private List<Claim> claimsList;
+
+	@OneToMany(mappedBy = "userId")
+	private List<Premium> PremiumList;
+
+	@OneToMany(mappedBy = "userId")
+	private List<PaymentMode> paymentModeList;
+
+	@OneToMany(mappedBy = "userId")
+	private List<Nominee> nomineeList;
+
+	@OneToMany(mappedBy = "userId")
+	private List<Coverage> coverageList;
+
+	public List<Policy> getPolicyList() {
+		return policyList;
+	}
+
+	public void setPolicyList(List<Policy> policyList) {
+		this.policyList = policyList;
+	}
+
+	public List<Claim> getClaimsList() {
+		return claimsList;
+	}
+
+	public void setClaimsList(List<Claim> claimsList) {
+		this.claimsList = claimsList;
+	}
+
+	public List<Premium> getPremiumList() {
+		return PremiumList;
+	}
+
+	public void setPremiumList(List<Premium> premiumList) {
+		PremiumList = premiumList;
+	}
+
+	public List<PaymentMode> getPaymentModeList() {
+		return paymentModeList;
+	}
+
+	public void setPaymentModeList(List<PaymentMode> paymentModeList) {
+		this.paymentModeList = paymentModeList;
+	}
+
+	public List<Nominee> getNomineeList() {
+		return nomineeList;
+	}
+
+	public void setNomineeList(List<Nominee> nomineeList) {
+		this.nomineeList = nomineeList;
+	}
+
+	public List<Coverage> getCoverageList() {
+		return coverageList;
+	}
+
+	public void setCoverageList(List<Coverage> coverageList) {
+		this.coverageList = coverageList;
+	}
 
 	public Integer getUserId() {
 		return userId;
@@ -85,8 +153,9 @@ public class User {
 	@Override
 	public String toString() {
 		return "User [userId=" + userId + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
-				+ ", password=" + password + ", dateOfBirth=" + dateOfBirth + ", mobile=" + mobile + "]";
+				+ ", password=" + password + ", dateOfBirth=" + dateOfBirth + ", mobile=" + mobile + ", policyList="
+				+ policyList + ", claimsList=" + claimsList + ", PremiumList=" + PremiumList + ", paymentModeList="
+				+ paymentModeList + ", nomineeList=" + nomineeList + ", coverageList=" + coverageList + "]";
 	}
-
 
 }

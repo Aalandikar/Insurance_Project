@@ -2,31 +2,34 @@ package com.example.insurance.project.model;
 
 import java.time.LocalDate;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import javax.persistence.Entity;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "claim")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Claim {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+	@javax.persistence.GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer claimId;
 	private String claimNumber;
 	private String description;
+	@JsonFormat(pattern = "dd-MM-yyyy")
 	private LocalDate date;
 	private double claimAmount;
+	private Integer userId;
 
-	public Integer getId() {
-		return id;
+	public Integer getClaimId() {
+		return claimId;
 	}
 
-	public void setId(Integer id) {
-		this.id = id;
+	public void setClaimId(Integer claimId) {
+		this.claimId = claimId;
 	}
 
 	public String getClaimNumber() {
@@ -61,10 +64,18 @@ public class Claim {
 		this.claimAmount = claimAmount;
 	}
 
+	public Integer getUserId() {
+		return userId;
+	}
+
+	public void setUserId(Integer userId) {
+		this.userId = userId;
+	}
+
 	@Override
 	public String toString() {
-		return "Claim [id=" + id + ", claimNumber=" + claimNumber + ", description=" + description + ", date=" + date
-				+ ", claimAmount=" + claimAmount + "]";
+		return "Claim [claimId=" + claimId + ", claimNumber=" + claimNumber + ", description=" + description + ", date="
+				+ date + ", claimAmount=" + claimAmount + ", userId=" + userId + "]";
 	}
 
 }

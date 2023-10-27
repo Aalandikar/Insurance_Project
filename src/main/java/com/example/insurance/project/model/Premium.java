@@ -1,83 +1,78 @@
 package com.example.insurance.project.model;
 
-import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonFormat;
-
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "premiums")
 public class Premium {
 
-	 @Id
-	    @GeneratedValue(strategy = GenerationType.IDENTITY)
-	    private Integer id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer premiumId;
 
-	    @ManyToOne
-	    @JoinColumn(name = "policy_id")
-	    private Policy policy;
+	@ManyToOne
+	@JoinColumn(name = "policy_id")
+	private Policy policy;
 
-	    private float amount;
+	private float amount;
+	private Integer userId;
+	
+	@JsonFormat(pattern = "dd-MM-yyyy")
+	private LocalDate premiumDate;
 
-	    @JsonFormat(pattern="dd/MM/yyyy")
-         private LocalDate premiumDate;
-	    
-	    @OneToMany(mappedBy = "premium",cascade = CascadeType.ALL)
-	    private List<Transaction> transactions;
+	public Integer getpremiumId() {
+		return premiumId;
+	}
 
-		public Integer getId() {
-			return id;
-		}
+	public void setpremiumId(Integer premiumId) {
+		this.premiumId = premiumId;
+	}
 
-		public void setId(Integer id) {
-			this.id = id;
-		}
+	public Policy getPolicy() {
+		return policy;
+	}
 
-		public Policy getPolicy() {
-			return policy;
-		}
+	public void setPolicy(Policy policy) {
+		this.policy = policy;
+	}
 
-		public void setPolicy(Policy policy) {
-			this.policy = policy;
-		}
+	public float getAmount() {
+		return amount;
+	}
 
-		public float getAmount() {
-			return amount;
-		}
+	public void setAmount(float amount) {
+		this.amount = amount;
+	}
 
-		public void setAmount(float amount) {
-			this.amount = amount;
-		}
+	public LocalDate getPremiumDate() {
+		return premiumDate;
+	}
 
-		public LocalDate getPremiumDate() {
-			return premiumDate;
-		}
+	public void setPremiumDate(LocalDate premiumDate) {
+		this.premiumDate = premiumDate;
+	}
 
-		public void setPremiumDate(LocalDate premiumDate) {
-			this.premiumDate = premiumDate;
-		}
+	public Integer getUserId() {
+		return userId;
+	}
 
-		public List<Transaction> getTransactions() {
-			return transactions;
-		}
+	public void setUserId(Integer userId) {
+		this.userId = userId;
+	}
 
-		public void setTransactions(List<Transaction> transactions) {
-			this.transactions = transactions;
-		}
-	    
-	    
+	@Override
+	public String toString() {
+		return "Premium [premiumId=" + premiumId + ", policy=" + policy + ", amount=" + amount + ", userId=" + userId
+				+ ", premiumDate=" + premiumDate +  "]";
+	}
 
-	   
 }
